@@ -112,9 +112,19 @@
 		<attribute name="Digest-Domain" type="string" code="119"/>
 		<attribute name="Digest-Stale" type="string" code="120"/>
 		<attribute name="Digest-HA1" type="string" code="121"/>
-		<attribute name="SIP-AOR" type="string" code="122"/>		
+		<attribute name="SIP-AOR" type="string" code="122"/>
+		<attribute name="Session-Svr-Key" type="string" code="151"/>
+		<attribute name="Pre-Input-Octets" type="integer" code="190"/>
+		<attribute name="Pre-Output-Octets" type="integer" code="191"/>
+		<attribute name="Pre-Input-Packets" type="integer" code="192"/>
+		<attribute name="Pre-Output-Packets" type="integer" code="193"/>
+		<attribute name="Disconnect-Cause" type="integer" code="195"/>
+		<attribute name="Connect-Progress" type="integer" code="196"/>
+		<attribute name="Data-Rate" type="integer" code="197"/>
+		<attribute name="PreSession-Time" type="integer" code="198"/>
 		<attribute name="Digest-Response" type="string" code="206"/>
 		<attribute name="Digest-Attributes" type="string" code="207"/>
+		<attribute name="Xmit-Rate" type="integer" code="255"/>
 	</attributes>
 	<vendors>
 		<vendor code="9" name="Cisco">
@@ -153,6 +163,8 @@
 			<attribute name="h323-gw-id" type="string" add="yes" code="33"/>
 			<attribute name="h323-call-treatment" type="string" add="yes" code="34"/>
 			<attribute name="h323-incoming-connection-ID" type="string" add="yes" code="35"/>
+			<attribute name="Cisco-Policy-Up" type="string" add="yes" code="37"/>
+			<attribute name="Cisco-Policy-Down" type="string" add="yes" code="38"/>
 			<attribute name="h323-ivr-in" type="string" add="yes" code="100"/>
 			<attribute name="h323-credit-amount" type="string" add="yes" code="101"/>
 			<attribute name="h323-credit-time" type="string" add="yes" code="102"/>
@@ -186,51 +198,51 @@
 			<attribute name="cisco-SSG-Control-Info" type="string" code="253"/>
 		</vendor>
 		<vendor name="ChilliSpot" code="14559">
-		    <attribute name="ChilliSpot-Max-Input-Octets" code="1" type="integer" />
-		    <attribute name="ChilliSpot-Max-Output-Octets" code="2" type="integer" />
-		    <attribute name="ChilliSpot-Max-Total-Octets" code="3" type="integer" />
-		    <attribute name="ChilliSpot-Bandwidth-Max-Up" code="4" type="integer" />
-		    <attribute name="ChilliSpot-Bandwidth-Max-Down" code="5" type="integer" />
-		    <attribute name="ChilliSpot-Config" code="6" type="string" />
-		    <attribute name="ChilliSpot-Lang" code="7" type="string" />
-		    <attribute name="ChilliSpot-Version" code="8" type="string" />
-		    <attribute name="ChilliSpot-OriginalURL" code="9" type="string" />
-		    <attribute name="ChilliSpot-Acct-View-Point" code="10" type="integer" />
-		    <attribute name="ChilliSpot-Require-UAM" code="11" type="string" />
-		    <attribute name="ChilliSpot-Require-Splash" code="12" type="string" />
-		    <attribute name="ChilliSpot-Route-To-Interface" code="13" type="string" />
-		    <attribute name="ChilliSpot-Max-Input-Gigawords" code="21" type="integer" />
-		    <attribute name="ChilliSpot-Max-Output-Gigawords" code="22" type="integer" />
-		    <attribute name="ChilliSpot-Max-Total-Gigawords" code="23" type="integer" />
-		    <attribute name="ChilliSpot-VLAN-Id" code="24" type="integer" />
-		    <attribute name="ChilliSpot-Sys-Uptime" code="40" type="integer" />
-		    <attribute name="ChilliSpot-Sys-LoadAvg" code="41" type="string" />
-		    <attribute name="ChilliSpot-Sys-Memory" code="42" type="string" />
-		    <attribute name="ChilliSpot-DHCP-Vendor-Class-Id" code="50" type="octets" />
-		    <attribute name="ChilliSpot-DHCP-Client-Id" code="51" type="octets" />
-		    <attribute name="ChilliSpot-DHCP-Options" code="52" type="octets" />
-		    <attribute name="ChilliSpot-DHCP-Filename" code="53" type="string" />
-		    <attribute name="ChilliSpot-DHCP-Hostname" code="54" type="string" />
-		    <attribute name="ChilliSpot-DHCP-Server-Name" code="55" type="string" />
-		    <attribute name="ChilliSpot-DHCP-Client-FQDN" code="56" type="string" />
-		    <attribute name="ChilliSpot-DHCP-Parameter-Request-List" code="57" type="octets" />
-		    <attribute name="ChilliSpot-UAM-Allowed" code="100" type="string" />
-		    <attribute name="ChilliSpot-MAC-Allowed" code="101" type="string" />
-		    <attribute name="ChilliSpot-Interval" code="102" type="integer" />
+			<attribute name="ChilliSpot-Max-Input-Octets" code="1" type="integer" />
+			<attribute name="ChilliSpot-Max-Output-Octets" code="2" type="integer" />
+			<attribute name="ChilliSpot-Max-Total-Octets" code="3" type="integer" />
+			<attribute name="ChilliSpot-Bandwidth-Max-Up" code="4" type="integer" />
+			<attribute name="ChilliSpot-Bandwidth-Max-Down" code="5" type="integer" />
+			<attribute name="ChilliSpot-Config" code="6" type="string" />
+			<attribute name="ChilliSpot-Lang" code="7" type="string" />
+			<attribute name="ChilliSpot-Version" code="8" type="string" />
+			<attribute name="ChilliSpot-OriginalURL" code="9" type="string" />
+			<attribute name="ChilliSpot-Acct-View-Point" code="10" type="integer" />
+			<attribute name="ChilliSpot-Require-UAM" code="11" type="string" />
+			<attribute name="ChilliSpot-Require-Splash" code="12" type="string" />
+			<attribute name="ChilliSpot-Route-To-Interface" code="13" type="string" />
+			<attribute name="ChilliSpot-Max-Input-Gigawords" code="21" type="integer" />
+			<attribute name="ChilliSpot-Max-Output-Gigawords" code="22" type="integer" />
+			<attribute name="ChilliSpot-Max-Total-Gigawords" code="23" type="integer" />
+			<attribute name="ChilliSpot-VLAN-Id" code="24" type="integer" />
+			<attribute name="ChilliSpot-Sys-Uptime" code="40" type="integer" />
+			<attribute name="ChilliSpot-Sys-LoadAvg" code="41" type="string" />
+			<attribute name="ChilliSpot-Sys-Memory" code="42" type="string" />
+			<attribute name="ChilliSpot-DHCP-Vendor-Class-Id" code="50" type="octets" />
+			<attribute name="ChilliSpot-DHCP-Client-Id" code="51" type="octets" />
+			<attribute name="ChilliSpot-DHCP-Options" code="52" type="octets" />
+			<attribute name="ChilliSpot-DHCP-Filename" code="53" type="string" />
+			<attribute name="ChilliSpot-DHCP-Hostname" code="54" type="string" />
+			<attribute name="ChilliSpot-DHCP-Server-Name" code="55" type="string" />
+			<attribute name="ChilliSpot-DHCP-Client-FQDN" code="56" type="string" />
+			<attribute name="ChilliSpot-DHCP-Parameter-Request-List" code="57" type="octets" />
+			<attribute name="ChilliSpot-UAM-Allowed" code="100" type="string" />
+			<attribute name="ChilliSpot-MAC-Allowed" code="101" type="string" />
+			<attribute name="ChilliSpot-Interval" code="102" type="integer" />
 		</vendor>
 		<vendor name="WISPr" code="14122">
-		    <attribute name="WISPr-Location-ID" code="1" type="string" />
-		    <attribute name="WISPr-Location-Name" code="2" type="string" />
-		    <attribute name="WISPr-Logoff-URL" code="3" type="string" />
-		    <attribute name="WISPr-Redirection-URL" code="4" type="string" />
-		    <attribute name="WISPr-Bandwidth-Min-Up" code="5" type="integer" />
-		    <attribute name="WISPr-Bandwidth-Min-Down" code="6" type="integer" />
-		    <attribute name="WISPr-Bandwidth-Max-Up" code="7" type="integer" />
-		    <attribute name="WISPr-Bandwidth-Max-Down" code="8" type="integer" />
-		    <attribute name="WISPr-Session-Terminate-Time" code="9" type="string" />
-		    <attribute name="WISPr-Session-Terminate-End-Of-Day" code="10" type="string" />
-		    <attribute name="WISPr-Billing-Class-Of-Service" code="11" type="string" />
-		</vendor>		
+			<attribute name="WISPr-Location-ID" code="1" type="string" />
+			<attribute name="WISPr-Location-Name" code="2" type="string" />
+			<attribute name="WISPr-Logoff-URL" code="3" type="string" />
+			<attribute name="WISPr-Redirection-URL" code="4" type="string" />
+			<attribute name="WISPr-Bandwidth-Min-Up" code="5" type="integer" />
+			<attribute name="WISPr-Bandwidth-Min-Down" code="6" type="integer" />
+			<attribute name="WISPr-Bandwidth-Max-Up" code="7" type="integer" />
+			<attribute name="WISPr-Bandwidth-Max-Down" code="8" type="integer" />
+			<attribute name="WISPr-Session-Terminate-Time" code="9" type="string" />
+			<attribute name="WISPr-Session-Terminate-End-Of-Day" code="10" type="string" />
+			<attribute name="WISPr-Billing-Class-Of-Service" code="11" type="string" />
+		</vendor>
 		<vendor code="6618" name="Quintum">
 			<attribute name="quintum-avpair" type="string" code="1"/>
 			<attribute name="Quintum-cisco-NAS-Port" type="string" code="2"/>
@@ -401,8 +413,8 @@
 			<attribute name="Ascend-PPP-Address" type="ipaddr" code="253"/>
 			<attribute name="Ascend-MPP-Idle-Percent" type="integer" code="254"/>
 			<attribute name="Ascend-Xmit-Rate" type="integer" code="255"/>
-		</vendor>		
-		<vendor code="311" name="Microsoft">		
+		</vendor>
+		<vendor code="311" name="Microsoft">
 			<attribute name="MS-CHAP-Response" type="octets" code="1"/>
 			<attribute name="MS-CHAP-Error" type="string" code="2"/>
 			<attribute name="MS-CHAP-LM-Enc-PW" type="octets" code="5"/>
@@ -456,21 +468,21 @@
 			<attribute name="mpd-drop-user" type="integer" code="154"/>
 		</vendor>
 		<vendor code="14988" name="Mikrotik">
-		    <attribute name="Mikrotik-Recv-Limit" type="integer" code="1" />
-		    <attribute name="Mikrotik-Xmit-Limit" type="integer" code="2" />
-		    <attribute name="Mikrotik-Group" type="string" code="3" />
-		    <attribute name="Mikrotik-Wireless-Forward" type="integer" code="4" />
-		    <attribute name="Mikrotik-Wireless-Skip-Dot1x" type="integer" code="5" />
-		    <attribute name="Mikrotik-Wireless-Enc-Algo" type="integer" code="6" />
-		    <attribute name="Mikrotik-Wireless-Enc-Key" type="string" code="7" />
-		    <attribute name="Mikrotik-Rate-Limit" type="string" code="8" />
-		    <attribute name="Mikrotik-Realm" type="string" code="9" />
-		    <attribute name="Mikrotik-Host-IP" type="ipaddr" code="10" />
-		    <attribute name="Mikrotik-Mark-Id" type="string" code="11" />
-		    <attribute name="Mikrotik-Advertise-URL" type="string" code="12" />
-		    <attribute name="Mikrotik-Advertise-Interval" type="integer" code="13" />
-		    <attribute name="Mikrotik-Recv-Limit-Gigawords" type="integer" code="14" />
-		    <attribute name="Mikrotik-Xmit-Limit-Gigawords" type="integer" code="15" />
+			<attribute name="Mikrotik-Recv-Limit" type="integer" code="1" />
+			<attribute name="Mikrotik-Xmit-Limit" type="integer" code="2" />
+			<attribute name="Mikrotik-Group" type="string" code="3" />
+			<attribute name="Mikrotik-Wireless-Forward" type="integer" code="4" />
+			<attribute name="Mikrotik-Wireless-Skip-Dot1x" type="integer" code="5" />
+			<attribute name="Mikrotik-Wireless-Enc-Algo" type="integer" code="6" />
+			<attribute name="Mikrotik-Wireless-Enc-Key" type="string" code="7" />
+			<attribute name="Mikrotik-Rate-Limit" type="string" code="8" />
+			<attribute name="Mikrotik-Realm" type="string" code="9" />
+			<attribute name="Mikrotik-Host-IP" type="ipaddr" code="10" />
+			<attribute name="Mikrotik-Mark-Id" type="string" code="11" />
+			<attribute name="Mikrotik-Advertise-URL" type="string" code="12" />
+			<attribute name="Mikrotik-Advertise-Interval" type="integer" code="13" />
+			<attribute name="Mikrotik-Recv-Limit-Gigawords" type="integer" code="14" />
+			<attribute name="Mikrotik-Xmit-Limit-Gigawords" type="integer" code="15" />
 		</vendor>
 		<vendor code="2636" name="Juniper">
 			<attribute name="Juniper-Local-User-Name" type="string" code="1"/>
@@ -567,13 +579,13 @@
 			<attribute name="Tunnel-Client-Int-Addr" type="ipaddr" code="82"/>
 			<attribute name="Tunnel-Server-Int-Addr" type="ipaddr" code="83"/>
 			<attribute name="Qos-Policing-Profile-Name" type="string" code="87"/>
-            <attribute name="Qos-Metering-Profile-Name" type="string" code="88"/>
-            <attribute name="Qos-Queuing-Profile-Name" type="string" code="89"/>            
-            <attribute name="Igmp-Service-Profile" type="string" code="90"/>
-            <attribute name="Sub-Profile-Name" type="string" code="91"/>
+			<attribute name="Qos-Metering-Profile-Name" type="string" code="88"/>
+			<attribute name="Qos-Queuing-Profile-Name" type="string" code="89"/>
+			<attribute name="Igmp-Service-Profile" type="string" code="90"/>
+			<attribute name="Sub-Profile-Name" type="string" code="91"/>
 			<attribute name="Forward-Policy" type="string" code="92"/>
 			<attribute name="Reauth-String" type="string" code="94"/>
-			<attribute name="Reauth-More" type="integer" code="95"/>            
+			<attribute name="Reauth-More" type="integer" code="95"/>
 			<attribute name="Agent-Remote-Id" type="octets" code="96"/>
 			<attribute name="Agent-Circuit-Id" type="octets" code="97"/>
 			<attribute name="Platform-Type" type="integer" code="98"/>
@@ -616,9 +628,9 @@
 			<attribute name="Qos-Rate-Inbound" type="string" code="156"/>
 			<attribute name="Qos-Rate-Outbound" type="string" code="157"/>
 			<attribute name="Service-Name" tag="2" type="string" code="190"/>
-            <attribute name="Service-Options" tag="1" type="integer" code="191"/>
-            <attribute name="Service-Parameter" tag="2" type="string" code="192"/>
+			<attribute name="Service-Options" tag="1" type="integer" code="191"/>
+			<attribute name="Service-Parameter" tag="2" type="string" code="192"/>
 			<attribute name="Dynamic-QoS-Param" type="string" code="196"/>
 		</vendor>
-	</vendors>	
+	</vendors>
 </dictionary>
