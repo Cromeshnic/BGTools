@@ -632,5 +632,24 @@
 			<attribute name="Service-Parameter" tag="2" type="string" code="192"/>
 			<attribute name="Dynamic-QoS-Param" type="string" code="196"/>
 		</vendor>
+		<vendor code="4874" name="JUNOSe">
+			<attribute name="ERX-Virtual-Router-Name" type="string" code="1"/>
+			<attribute name="ERX-Primary-Dns" type="ipaddr" code="4"/>
+			<attribute name="ERX-Secondary-Dns" type="ipaddr" code="5"/>
+			<attribute name="ERX-Ingress-Policy-Name" type="string" code="10"/>
+			<attribute name="ERX-Egress-Policy-Name" type="string" code="11"/>
+			<attribute name="ERX-Ingress-Statistics" type="integer" code="12"/>
+			<attribute name="ERX-Egress-Statistics" type="integer" code="13"/>
+			<attribute name="ERX-Pppoe-Description" type="string" code="24"/>
+			<attribute name="ERX-Input-Gigapkts" type="integer" code="42"/>
+			<attribute name="ERX-Output-Gigapkts" type="integer" code="43"/>
+			<attribute name="ERX-Interface-Desc" type="string" code="63"/>
+			<attribute name="ERX-Service-Activate" type="string" tag="yes" code="65"/>
+			<attribute name="ERX-Service-Deactivate" type="string" code="66"/>
+			<attribute name="ERX-Service-Volume" type="integer" tag="yes" code="67"/>
+			<attribute name="ERX-Service-Timeout" type="integer" tag="yes" code="68"/>
+			<attribute name="ERX-Service-Stats" type="integer" tag="yes" code="69"/>
+			<attribute name="ERX-Service-Session" type="string" code="83"/>
+		</vendor>
 	</vendors>
 </dictionary>
